@@ -28,15 +28,16 @@ Yes but it requires  admin privileges to enable it.
 
  - CTF, pentest etc with remote shell on windows device
 
-WSLight uses 2 utility:
-
- - wslight-cli: CLI used on your machine to interact with the windows machine
- - wslight: used on Windows machine to catch unix cmd from your machine and translate in Powershell
 
  ## 💺 Installation
 
  ## 🚀 Usage 
  
+ WSLight uses 2 utility:
+
+ - wslight-cli: CLI used on your machine to interact with the windows machine
+ - wslight: used on Windows machine to catch unix cmd from your machine and translate in Powershell
+
 ### Establish connection
 On windows machine launch the listener:
 
