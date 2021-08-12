@@ -14,7 +14,7 @@ Remote shell on windows with Unix command
 
 Providing equivalent of bash (Unix cmd) on Windows
 
-> Powershell already exists!
+> Powershell & cmd already exist!
 
 Exactly, but if you are not very comfortable with it and you have more references with unix commands
 
