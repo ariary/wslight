@@ -94,14 +94,29 @@ const (
 	connType = "tcp"
 )
 
-func ParseCommandAndArgs(message string) (cmd string, args []string) {
+type Command struct {
+	CmdName string
+	Args    []string
+}
 
-	msgSlice := strings.Split(message, " ")
-	cmd = msgSlice[0]
-	if len(msgSlice) > 1 {
-		args = msgSlice[1:]
+type Commands struct {
+	CommandList []Command
+}
+
+func ParseCommandAndArgs(message string) Commands {
+	var cmdList []Command
+	//detect Pipe ("|") must be before and after a space
+	pipeSlice := strings.Split(message, " | ") // could put a regex to be better
+	for i := 0; i < len(pipeSlice); i++ {
+		cmdSlice := strings.Split(pipeSlice[i], " ")
+		cmd := Command{}
+		cmd.CmdName = cmdSlice[0]
+		if len(cmdSlice) > 1 {
+			cmd.Args = cmdSlice[1:]
+		}
+		cmdList = append(cmdList, cmd)
 	}
-	return cmd, args
+	return Commands{cmdList}
 }
 
 func Exec(command string, arguments []string) string {
@@ -113,7 +128,21 @@ func Exec(command string, arguments []string) string {
 	if err != nil {
 		//don't exit
 		fmt.Printf("cmd.Run() failed with %s\n", err)
-		return err.Error()
+	}
+	return string(out)
+}
+
+func ExecPipe(command string, arguments []string, previousresult string) string {
+
+	cmd := exec.Command(command, arguments...)
+	cmd.Stdin = strings.NewReader(previousresult)
+	if runtime.GOOS == "windows" {
+		cmd = Translate(command, arguments)
+	}
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		//don't exit
+		fmt.Printf("cmd.Run() failed with %s\n", err)
 	}
 	return string(out)
 }
@@ -129,9 +158,23 @@ func HandleCmd(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusNotFound)
 	}
 
-	cmd, args := ParseCommandAndArgs(string(body))
+	commands := ParseCommandAndArgs(string(body))
 
-	result := Exec(cmd, args)
+	var result string
+	//pipe
+	for i := 0; i < len(commands.CommandList); i++ {
+		cmd := commands.CommandList[i]
+		// if result != "" {
+		// 	cmd.Args = append(cmd.Args, result)
+		// }
+		if i == 0 {
+			result = Exec(cmd.CmdName, cmd.Args)
+		} else {
+			// pipe
+			result = ExecPipe(cmd.CmdName, cmd.Args, result)
+		}
+
+	}
 	fmt.Fprintf(w, result)
 }
 

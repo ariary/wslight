@@ -22,7 +22,7 @@ const (
 
 func parseInput(reader *bufio.Reader) string {
 	input, err := reader.ReadString('\n')
-	input = strings.Trim(input, "\n")
+	input = strings.TrimSuffix(input, "\n")
 	if err != nil {
 		fmt.Println(err)
 	}
