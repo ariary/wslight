@@ -7,6 +7,8 @@ import (
 	"wslight/pkg/utils"
 )
 
+//https://www.lemoda.net/windows/windows2unix/windows2unix.html
+
 //Translate Unix command to cmd/powershell one
 // If it is a special it return true, like this we know we don't have to execute it
 func Translate(c Command, ctx *Context) (cmd string, special bool) {
@@ -22,6 +24,9 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 	case "+x":
 		ctx.Debug = true
 		special = true
+	case "hostname":
+		//no translation, no arg and specific flag add
+		return c.CmdName, false
 	case "pwd":
 		//retrieve current path see https://stackoverflow.com/questions/44206940/execute-the-cd-command-for-cmd-in-go
 		cmd = "cd"
@@ -29,14 +34,29 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 		var cmdName string
 		var filename string
 
-		if utils.Contains(c.Args, "-r") {
-			cmdName = "rmdir"
+		if utils.Contains(c.Args, "-r") || utils.Contains(c.Args, "-R") {
+			cmdName = "rmdir /Q /S"
 			filename = c.Args[1]
 		} else {
 			cmdName = "del"
 			filename = c.Args[0]
 		}
 		full := []string{cmdName, filename}
+		cmd = strings.Join(full, " ")
+	case "cp":
+		var cmdName string
+		var src, dst string
+
+		if utils.Contains(c.Args, "-r") || utils.Contains(c.Args, "-R") {
+			cmdName = "xcopy /I"
+			src = c.Args[1]
+			dst = c.Args[2]
+		} else {
+			cmdName = "copy"
+			src = c.Args[0]
+			dst = c.Args[1]
+		}
+		full := []string{cmdName, src, dst}
 		cmd = strings.Join(full, " ")
 	case "grep":
 		cmdName := "findstr"
@@ -62,6 +82,9 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 		filename := ParseFilename(c.Args)
 		full := []string{cmdName, flags, filename}
 		cmd = strings.Join(full, " ")
+	case "tree":
+		cmdName := "tree /f "
+		cmd = cmdName + strings.Join(c.Args, " ")
 	}
 	return cmd, special
 }

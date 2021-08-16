@@ -31,6 +31,9 @@ var suggestions = []prompt.Suggest{
 	{"grep", "print lines that match patterns (-R and -i available)"},
 	{"cat", "concatenate files and print on the standard output"},
 	{"ls", "list directory contents ( -a, -l, -R available"},
+	{"tree", "list contents of directories in a tree-like format"},
+	{"cp", "copy files and directories"},
+	{"hostname", "show the system's host name"},
 }
 
 //Prefix for the prompt
