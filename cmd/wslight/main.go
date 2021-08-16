@@ -29,6 +29,8 @@ var suggestions = []prompt.Suggest{
 	{"pwd", "get current directory"},
 	{"rm", "remove a file or directory (-f available for directory)"},
 	{"grep", "print lines that match patterns (-R and -i available)"},
+	{"cat", "concatenate files and print on the standard output"},
+	{"ls", "list directory contents ( -a, -l, -R available"},
 }
 
 //Prefix for the prompt

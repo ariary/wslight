@@ -13,13 +13,12 @@ func Exec(command string, ctx *Context) {
 	}
 
 	cmd := exec.Command("cmd", "/c", command)
-	out, err := cmd.Output()
-	fmt.Println(cmd.Dir)
-	if err != nil {
-		fmt.Println("Error launching command:", err.Error())
-	}
+	out, err := cmd.CombinedOutput()
 	cmd.Process.Kill()
 	output := string(out)
+	if err != nil {
+		output = "Error launching command: " + output
+	}
 	fmt.Println(output)
 }
 

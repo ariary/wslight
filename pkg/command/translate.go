@@ -1,6 +1,8 @@
 package command
 
 import (
+	"fmt"
+	"os"
 	"strings"
 	"wslight/pkg/utils"
 )
@@ -9,6 +11,11 @@ import (
 // If it is a special it return true, like this we know we don't have to execute it
 func Translate(c Command, ctx *Context) (cmd string, special bool) {
 	switch c.CmdName {
+	case "help":
+		fmt.Println("...Under construction...")
+		special = true
+	case "exit":
+		os.Exit(0)
 	case "-x":
 		ctx.Debug = false
 		special = true
@@ -39,6 +46,21 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 			filename = "*.*"
 		}
 		full := []string{cmdName, flags, pattern, filename}
+		cmd = strings.Join(full, " ")
+	case "cat":
+		cmdName := "type"
+		var filename string
+		if c.Args != nil {
+			filename = c.Args[0]
+		}
+
+		full := []string{cmdName, filename}
+		cmd = strings.Join(full, " ")
+	case "ls":
+		cmdName := "dir"
+		flags := TranslateLsFlags(c.Args)
+		filename := ParseFilename(c.Args)
+		full := []string{cmdName, flags, filename}
 		cmd = strings.Join(full, " ")
 	}
 	return cmd, special
