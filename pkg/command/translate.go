@@ -31,6 +31,15 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 		}
 		full := []string{cmdName, filename}
 		cmd = strings.Join(full, " ")
+	case "grep":
+		cmdName := "findstr"
+		flags, recursive := TranslateGrepFlags(c.Args)
+		pattern, filename := ParsePatternAndFilename(c.Args)
+		if recursive {
+			filename = "*.*"
+		}
+		full := []string{cmdName, flags, pattern, filename}
+		cmd = strings.Join(full, " ")
 	}
 	return cmd, special
 }

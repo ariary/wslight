@@ -14,8 +14,9 @@ func Exec(command string, ctx *Context) {
 
 	cmd := exec.Command("cmd", "/c", command)
 	out, err := cmd.Output()
+	fmt.Println(cmd.Dir)
 	if err != nil {
-		fmt.Println("Error retrieving current directory:", err)
+		fmt.Println("Error launching command:", err.Error())
 	}
 	cmd.Process.Kill()
 	output := string(out)

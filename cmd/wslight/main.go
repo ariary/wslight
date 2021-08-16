@@ -27,7 +27,8 @@ var suggestions = []prompt.Suggest{
 
 	//linux utility
 	{"pwd", "get current directory"},
-	{"rm", "remove a file or directory (-f availble for directory)"},
+	{"rm", "remove a file or directory (-f available for directory)"},
+	{"grep", "print lines that match patterns (-R and -i available)"},
 }
 
 //Prefix for the prompt
