@@ -23,6 +23,7 @@ Exactly, but if you are not very comfortable with it and you have more reference
 Yes but it requires  admin privileges to enable it. 
 
 **⚠️ Only a set of Unix command is available. I will provide more as things progress. Do not hesitate to let me know which one you will be interested in**
+
 *(Or a make a PR it is **simple**, just add a line in the `suggestions` slice (`cmd/wslight/main.go`) explaining what is the command, and  apply the command behavior in the `Translate` function (in `pkg/command/translate.go`)*
 
 
@@ -45,33 +46,20 @@ wslight.exe
 
 
 ### Launch equivalent of unix command in `cmd.exe`
-Once th cli is launched
+Once the cli is launched
 ```
 > <your_command> <your_argument>
 ```
+As simple as that!
 
-### Establish connection
-On windows machine launch the listener:
+Type `help` to get available commands
 
-    (Windows) > wslight listen <port>
+### Activate debug mode
 
-On your machine:
+Debug mode is useful to see which command is in fact launch on cmd (to see the translation). It is useful to debug your behaviour or just learn some command
 ```
-$ export WSLIGHT_IP=<windows_ip> WSLIGHT_PORT=<wslight_listener_port>
-$ 
-```
-or
-```
-$ wslight-cli -remote="<windows_ip>:<wslight_listener_port>"
+> +x
 ```
 
-### Launch command
-Example with wget:
-
-    (wslight-cli) > wget http://10.10.40.40:888
- 
-### See equivalent cmd in Powershell
-~ `bash +x`, it is used to see what command will be executed:
-
-    (wslight-cli) > debug <cmd> <args>
+Disable (by default) it with (`-x`)
 
