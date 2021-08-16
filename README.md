@@ -32,6 +32,15 @@ If the command you want to launch is not available [see](#limitsimprovements)
 
 
  ## 💺 Installation
+ 
+Clone the repo and download the dependencies locally:
+
+git clone https://github.com/ariary/wslight.git
+make before.build
+
+To build wslight :
+
+ make build.wslight
 
  ## 🚀 Usage 
  
