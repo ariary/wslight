@@ -8,6 +8,7 @@ Unix command translator on Windows cmd (CLi)
  - [🔦 Idea](#-idea)
  - [💺 Installation](#-installation)
  - [🚀 Usage](#-usage)
+ - [💭Limits/improvements](#limitsimprovements)
 	
 ## 🔦 Idea
 **Aim?**
@@ -22,10 +23,7 @@ Exactly, but if you are not very comfortable with it and you have more reference
 
 Yes but it requires  admin privileges to enable it. 
 
-**⚠️ Only a set of Unix command is available. I will provide more as things progress. Do not hesitate to let me know which one you will be interested in**
-
-*(Or a make a PR it is **simple**, just add a line in the `suggestions` slice (`cmd/wslight/main.go`) explaining what is the command, and  apply the command behavior in the `Translate` function (in `pkg/command/translate.go`)*
-
+If the command you want to launch is not available [see](#limitsimprovements)
 
 **Use cases?**
 
@@ -50,7 +48,7 @@ Once the cli is launched
 ```
 > <your_command> <your_argument>
 ```
-As simple as that!
+As simple as that! If the command you want to launch is not available [see](#limitsimprovements)
 
 Type `help` to get available commands
 
@@ -63,3 +61,8 @@ Debug mode is useful to see which command is in fact launch on cmd (to see the t
 
 Disable (by default) it with (`-x`)
 
+## 💭Limits/improvements
+
+**⚠️ Only a set of Unix command is available. I will provide more as things progress. Do not hesitate to let me know which one you will be interested in**
+
+*(Or a make a PR it is **simple**, just add a line in the `suggestions` slice (`cmd/wslight/main.go`) explaining what is the command, and  apply the command behavior in the `Translate` function (in `pkg/command/translate.go`)*
