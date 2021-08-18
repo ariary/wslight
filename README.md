@@ -1,4 +1,5 @@
 
+
 # WSLight
 
 Unix command translator on Windows cmd (CLi)
@@ -8,6 +9,7 @@ Unix command translator on Windows cmd (CLi)
  - [🔦 Idea](#-idea)
  - [💺 Installation](#-installation)
  - [🚀 Usage](#-usage)
+ - [📝 Commands](#-commands)
  - [💭Limits/improvements](#limitsimprovements)
 	
 ## 🔦 Idea
@@ -71,6 +73,24 @@ Debug mode is useful to see which command is in fact launch on cmd (to see the t
 ```
 
 Disable (by default) it with (`-x`)
+
+## 📝 Commands & Features
+
+ - `wslight` could understand pipe commands
+
+List of available commands
+
+
+| Unix command  | flag accpted|
+|:--|:--|
+| hostname ||
+| pwd||
+| rm |-r,-f|
+| cp|-r |
+|grep| -R, -i|
+|ls|-l, -R, -a|
+|tree||
+*flags must be separated with spaces to be parsed correctly*
 
 ## 💭Limits/improvements
 
