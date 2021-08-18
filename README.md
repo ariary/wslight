@@ -62,9 +62,8 @@ Once the cli is launched
 > <your_command> <your_argument>
 ```
 As simple as that! 
-see [available commands](#-commands--features)
 
-Type `help` to get available commands
+see [available commands](#-commands--features) or Type `help` to get available commands
 
 ### Activate debug mode
 
