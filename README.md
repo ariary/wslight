@@ -90,6 +90,7 @@ List of available commands
 |grep| -R, -i|
 |ls|-l, -R, -a|
 |tree||
+
 *flags must be separated with spaces to be parsed correctly*
 
 ## 💭Limits/improvements
