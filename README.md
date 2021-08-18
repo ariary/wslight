@@ -9,7 +9,7 @@ Unix command translator on Windows cmd (CLi)
  - [🔦 Idea](#-idea)
  - [💺 Installation](#-installation)
  - [🚀 Usage](#-usage)
- - [📝 Commands](#-commands & features)
+ - [📝 Commands](#-commands--features)
  - [💭Limits/improvements](#limitsimprovements)
 	
 ## 🔦 Idea
