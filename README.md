@@ -61,7 +61,8 @@ Once the cli is launched
 ```
 > <your_command> <your_argument>
 ```
-As simple as that! If the command you want to launch is not available [see](#limitsimprovements)
+As simple as that! 
+see [available commands](#-commands--features)
 
 Type `help` to get available commands
 
@@ -92,6 +93,8 @@ List of available commands
 |tree||
 
 *flags must be separated with spaces to be parsed correctly*
+
+If the command you want to launch is not available [see](#limitsimprovements)
 
 ## 💭Limits/improvements
 
