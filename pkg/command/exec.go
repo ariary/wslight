@@ -13,6 +13,7 @@ func Exec(command string, ctx *Context) {
 	}
 
 	cmd := exec.Command("cmd", "/c", command)
+	//cmd.Dir = filepath.Clean(ctx.Path)
 	out, err := cmd.CombinedOutput()
 	cmd.Process.Kill()
 	output := string(out)

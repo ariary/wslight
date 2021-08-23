@@ -34,6 +34,7 @@ var suggestions = []prompt.Suggest{
 	{"tree", "list contents of directories in a tree-like format"},
 	{"cp", "copy files and directories"},
 	{"hostname", "show the system's host name"},
+	{"cd", "change working directory (accept ~ and - arguments)"},
 }
 
 //Prefix for the prompt
@@ -98,9 +99,13 @@ func main() {
 	defer handleExit()
 
 	ctx = &command.Context{
-		Path:  "",
-		Debug: false,
+		Path:         "",
+		PreviousPath: "",
+		Debug:        false,
 	}
+
+	ctx.RetrieveRootDir()
+	fmt.Println("Start WSLight in:", ctx.Path)
 
 	p := prompt.New(
 		executor,
