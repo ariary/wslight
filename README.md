@@ -1,16 +1,28 @@
 
 
+
+
+
 # WSLight
 
 Unix command translator on Windows cmd (CLi)
 
-##  Table of contents
+----
 
- - [🔦 Idea](#-idea)
- - [💺 Installation](#-installation)
- - [🚀 Usage](#-usage)
- - [📝 Commands](#-commands--features)
- - [💭Limits/improvements](#limitsimprovements)
+<p align="center">
+<strong><a href="#-idea">🔦 Idea</a></strong>
+|
+<strong><a href="#-installation">💺 Installation</a></strong>
+|
+<strong><a href="#-usage">🚀 Usage</a></strong>
+|
+<strong><a href="#-commands--features">📝 Commands</a></strong>
+|
+<strong><a href="#limitsimprovements">💭Limits/improvements</a></strong>
+</p>
+
+----
+
 	
 ## 🔦 Idea
 **Aim?**
@@ -100,3 +112,6 @@ If the command you want to launch is not available [see](#limitsimprovements)
 **⚠️ Only a set of Unix command is available. I will provide more as things progress. Do not hesitate to let me know which one you will be interested in**
 
 *(Or a make a PR it is **simple**, just add a line in the `suggestions` slice (`cmd/wslight/main.go`) explaining what is the command, and  apply the command behavior in the `Translate` function (in `pkg/command/translate.go`)*
+
+ - From now cli have no context (ie make a cd has no impact)
+
