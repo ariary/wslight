@@ -93,7 +93,7 @@ Disable (by default) it with (`-x`)
 List of available commands
 
 
-| Unix command  | flag accpted|
+| Unix command  | flag accepted|
 |:--|:--|
 | hostname ||
 | pwd||
@@ -102,6 +102,8 @@ List of available commands
 |grep| -R, -i|
 |ls|-l, -R, -a|
 |tree||
+|env||
+|cd| -, ~|
 
 *flags must be separated with spaces to be parsed correctly*
 
