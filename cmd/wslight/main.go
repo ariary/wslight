@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"strings"
 	"wslight/pkg/command"
+	"wslight/pkg/utils"
 
 	prompt "github.com/c-bata/go-prompt"
 )
@@ -14,28 +15,6 @@ import (
 const arrow = "» "
 
 var ctx *command.Context
-
-// suggestions list
-var suggestions = []prompt.Suggest{
-	// General
-	{"exit", "Exit adretctl"},
-	{"help", "get help method"},
-
-	//debug mode
-	{"+x", "see which command is launched, equivalent of bash +x"},
-	{"-x", "disable debug mode"},
-
-	//linux utility
-	{"pwd", "get current directory"},
-	{"rm", "remove a file or directory (-f available for directory)"},
-	{"grep", "print lines that match patterns (-R and -i available)"},
-	{"cat", "concatenate files and print on the standard output"},
-	{"ls", "list directory contents ( -a, -l, -R available"},
-	{"tree", "list contents of directories in a tree-like format"},
-	{"cp", "copy files and directories"},
-	{"hostname", "show the system's host name"},
-	{"cd", "change working directory (accept ~ and - arguments)"},
-}
 
 //Prefix for the prompt
 func livePrefix() (string, bool) {
@@ -84,7 +63,7 @@ func completer(in prompt.Document) []prompt.Suggest {
 	if w == "" {
 		return []prompt.Suggest{}
 	}
-	return prompt.FilterHasPrefix(suggestions, w, true)
+	return prompt.FilterHasPrefix(utils.Suggestions, w, true)
 }
 
 //Function launch when wslight exit. Mainly use to prevent https://github.com/c-bata/go-prompt/issues/228
@@ -105,7 +84,6 @@ func main() {
 	}
 
 	ctx.RetrieveRootDir()
-	fmt.Println("Start WSLight in:", ctx.Path)
 
 	p := prompt.New(
 		executor,

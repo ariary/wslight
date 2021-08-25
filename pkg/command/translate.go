@@ -3,6 +3,7 @@ package command
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 	"wslight/pkg/utils"
 )
@@ -85,6 +86,25 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 	case "tree":
 		cmdName := "tree /f "
 		cmd = cmdName + strings.Join(c.Args, " ")
+	case "env":
+		cmd = "set"
+	case "cd":
+		special = true
+		//stat file
+		path, special, err := StatPath(c.Args, ctx)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			//update path accordingly
+			ctx.PreviousPath = ctx.Path
+			if special {
+				//absolute path
+				ctx.Path = path
+			} else {
+				ctx.Path = filepath.Clean(ctx.Path + "\\" + path)
+			}
+
+		}
 	}
 	return cmd, special
 }

@@ -5,6 +5,7 @@ import (
 	"wslight/pkg/utils"
 )
 
+//Get flag of the ls command and translate them
 func TranslateLsFlags(args []string) (flags string) {
 	// -a ?
 	if !utils.Contains(args, "-l") {
@@ -20,6 +21,7 @@ func TranslateLsFlags(args []string) (flags string) {
 	return flags
 }
 
+//Retrieve filename from ls command
 func ParseFilename(args []string) (filename string) {
 	// get args wich are not flags
 	var noflags []string
