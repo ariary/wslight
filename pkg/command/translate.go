@@ -15,7 +15,7 @@ import (
 func Translate(c Command, ctx *Context) (cmd string, special bool) {
 	switch c.CmdName {
 	case "help":
-		fmt.Println("...Under construction...")
+		utils.PrintSuggestions()
 		special = true
 	case "exit":
 		os.Exit(0)

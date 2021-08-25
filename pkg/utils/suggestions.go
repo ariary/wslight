@@ -1,11 +1,15 @@
 package utils
 
-import "github.com/c-bata/go-prompt"
+import (
+	"fmt"
+
+	"github.com/c-bata/go-prompt"
+)
 
 // suggestions list
 var Suggestions = []prompt.Suggest{
 	// General
-	{"exit", "Exit adretctl"},
+	{"exit", "Exit wslight"},
 	{"help", "get help method"},
 
 	//debug mode
@@ -22,5 +26,12 @@ var Suggestions = []prompt.Suggest{
 	{"cp", "copy files and directories"},
 	{"hostname", "show the system's host name"},
 	{"cd", "change working directory (accept ~ and - arguments)"},
-	{"env", "get environnement variable"},
+	{"env", "print and set environnement variables"},
+}
+
+//Print suggestions
+func PrintSuggestions() {
+	for i := 0; i < len(Suggestions); i++ {
+		fmt.Println(Suggestions[i].Text + " - " + Suggestions[i].Description)
+	}
 }
