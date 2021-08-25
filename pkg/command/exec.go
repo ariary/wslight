@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os/exec"
 	"strings"
+	"wslight/pkg/utils"
 )
 
 func Exec(command string, ctx *Context) {
@@ -13,10 +14,10 @@ func Exec(command string, ctx *Context) {
 	}
 
 	cmd := exec.Command("cmd", "/c", command)
-	//cmd.Dir = filepath.Clean(ctx.Path)
+	cmd.Dir = ctx.Path
 	out, err := cmd.CombinedOutput()
 	cmd.Process.Kill()
-	output := string(out)
+	output := utils.CleanOutput(string(out))
 	if err != nil {
 		output = "Error launching command: " + output
 	}

@@ -3,7 +3,7 @@ package command
 import (
 	"fmt"
 	"os/exec"
-	"strings"
+	"wslight/pkg/utils"
 )
 
 type Context struct {
@@ -17,7 +17,8 @@ func (c *Context) RetrieveRootDir() {
 	cmd := exec.Command("cmd", "/c", "cd")
 	out, err := cmd.CombinedOutput()
 	cmd.Process.Kill()
-	output := strings.Trim(string(out), "\n")
+	//output := strings.Trim(string(out), "\n")
+	output := utils.CleanOutput(string(out))
 	if err != nil {
 		fmt.Println("Failed retrieving current dir for WSLight:", err)
 	}
