@@ -10,6 +10,7 @@ type Context struct {
 	Path         string
 	PreviousPath string
 	Debug        bool
+	Env          map[string]string
 }
 
 // Retrieve current directory by executing cmd /c cd (~ pwd)

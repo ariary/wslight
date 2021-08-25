@@ -87,7 +87,15 @@ func Translate(c Command, ctx *Context) (cmd string, special bool) {
 		cmdName := "tree /f "
 		cmd = cmdName + strings.Join(c.Args, " ")
 	case "env":
-		cmd = "set"
+		cmdName := "set "
+		if len(c.Args) > 0 {
+			err := updateEnvContext(c.Args, ctx)
+			if err != nil {
+				fmt.Println(err)
+			}
+			special = true
+		}
+		cmd = cmdName + strings.Join(c.Args, " ")
 	case "cd":
 		special = true
 		//stat file

@@ -15,7 +15,7 @@ func TranslateLsFlags(args []string) (flags string) {
 		flags += " /s "
 	}
 	if utils.Contains(args, "-a") {
-		flags += " /a:h "
+		flags += " /a:h " //ou alors command attrib
 	}
 
 	return flags

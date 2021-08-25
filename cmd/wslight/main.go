@@ -81,6 +81,7 @@ func main() {
 		Path:         "",
 		PreviousPath: "",
 		Debug:        false,
+		Env:          make(map[string]string),
 	}
 
 	ctx.RetrieveRootDir()

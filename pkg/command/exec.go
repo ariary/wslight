@@ -2,6 +2,7 @@ package command
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 	"strings"
 	"wslight/pkg/utils"
@@ -15,6 +16,11 @@ func Exec(command string, ctx *Context) {
 
 	cmd := exec.Command("cmd", "/c", command)
 	cmd.Dir = ctx.Path
+	cmd.Env = os.Environ()
+	for key, value := range ctx.Env {
+		cmd.Env = append(cmd.Env, key+"="+value)
+	}
+
 	out, err := cmd.CombinedOutput()
 	cmd.Process.Kill()
 	output := utils.CleanOutput(string(out))
