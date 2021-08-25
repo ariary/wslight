@@ -33,7 +33,7 @@ func ParsePatternAndFilename(args []string) (pattern string, filename string) {
 		fmt.Println("grep: Missing pattern for grep command")
 	} else if len(noflags) == 1 {
 		//debug purpose (no filename provided so use of stdin)
-		fmt.Println("grep: No filename provided")
+		//fmt.Println("grep: No filename provided")
 		pattern = noflags[0]
 	} else {
 		pattern = noflags[0]

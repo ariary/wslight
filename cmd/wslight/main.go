@@ -39,8 +39,8 @@ var suggestions = []prompt.Suggest{
 
 //Prefix for the prompt
 func livePrefix() (string, bool) {
-	// return ctx.path + arrow, true
-	return arrow, true
+	return ctx.Path + arrow, true
+	// return arrow, true
 }
 
 //perform at each loop
