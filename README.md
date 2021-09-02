@@ -115,5 +115,4 @@ If the command you want to launch is not available [see](#limitsimprovements)
 
 *(Or a make a PR it is **simple**, just add a line in the `suggestions` slice (`cmd/wslight/main.go`) explaining what is the command, and  apply the command behavior in the `Translate` function (in `pkg/command/translate.go`)*
 
- - From now cli have no context (ie make a cd has no impact)
 
