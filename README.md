@@ -105,7 +105,7 @@ List of available commands
 |env||
 |cd| -, ~|
 
-*flags must be separated with spaces to be parsed correctly*
+*flags must be separated with spaces to be correctly parsed correctly*
 
 If the command you want to launch is not available [see](#limitsimprovements)
 
